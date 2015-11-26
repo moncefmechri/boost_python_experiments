@@ -15,10 +15,10 @@ TARGET = island_counter_ext
 
 
 $(TARGET).so: $(TARGET).o
-	$(CXX) -shared -Wl,--export-dynamic $(TARGET).o -lboost_python -lpthread -ldl -lutil -lm -lpython2.7 -Xlinker -export-dynamic -o $(TARGET).so island_counter.o
+	$(CXX) -O2 -shared -Wl,--export-dynamic $(TARGET).o -lboost_python -lpthread -ldl -lutil -lm -lpython2.7 -Xlinker -export-dynamic -o $(TARGET).so island_counter.o
  
 $(TARGET).o: $(TARGET).cpp
-	$(CXX) -std=c++11 $(PYTHON_INCLUDE) -fPIC -c $(TARGET).cpp island_counter.cpp
+	$(CXX) -O2 -std=c++11 $(PYTHON_INCLUDE) -fPIC -c $(TARGET).cpp island_counter.cpp
 
 clean:
 	rm *.o *.so
